@@ -14,7 +14,16 @@ get_reports <- function(file_extension){
   names(files_list) <- seq(length(files_list))
 
   reports <- purrr::map_dfc(.x = files_list,
-                            .f = function(x) stringr::str_replace_all(stringr::str_to_lower(readtext::readtext(x)["text"]), "\\r?\\n|\\r", " "))
+                            .f = function(x) stringr::str_replace_all(                      # replace new lines with spaces
+                                            stringi::stri_trans_general(                    # translate any non-ASCII characters to standard characters
+                                                    stringr::str_to_lower(                  # to lower case letters
+                                                         readtext::readtext(x)["text"]      # read in the text files and take just the "text" part
+                                                                          ),
+                                                                        "latin-ascii"),
+                                                                      "\\r?\\n|\\r", " ")
+                            )
 
   return(reports)
 }
+
+
