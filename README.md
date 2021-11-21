@@ -1,1 +1,1 @@
-# bhi_mri_report_extractor
+# rmriextractor
