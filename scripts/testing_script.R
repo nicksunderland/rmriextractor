@@ -12,4 +12,4 @@ variable_regexs <- get_variable_regular_expressions()
 # Read the reports
 data <- extract_report_data(reports, variable_regexs)
 
-# ..
+# ...
