@@ -11,9 +11,10 @@
 #'
 extract_report_data <- function(reports, variable_regexs){
 
+  # The base::outer function just helps do matrix multiplication; all it does is replicate the regexes so that each report gets exposed to each regex - e.g. if 10 regexes and 10 reports this just creates a [100 x 2] matrix to work on
   result <- outer(reports,
                   variable_regexs,
-                  FUN = function(reports, variable_regexs){  # The base::outer function just helps do matrix multiplication; all it does is replicate the regexes so that each report gets exposed to each regex - e.g. if 10 regexes and 10 reports this just creates a [100 x 2] matrix to work on
+                  FUN = function(reports, variable_regexs){
                       return(purrr::map2_dbl(reports, variable_regexs, .f = inner_func)) # Apply the inner function to each text-report:regex pair, return as a double database
                   }
   )                                                   # the outer function nicely re-converts back to an appropriately sized matrix e.g. 10x10 in the example above
