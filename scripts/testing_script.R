@@ -3,7 +3,7 @@ library(devtools)
 rm(list=ls())
 load_all()
 
-# Read the reports from the /data folder in this R package
+# Read the reports from the /data folder in this R package; need to specify what file extension they have
 reports <- get_reports("*.docx")
 
 # Create the regular expressions
