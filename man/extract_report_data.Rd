@@ -19,6 +19,6 @@ extract_report_data
 }
 \examples{
 extract_report_data(data.frame(report1 = "hello world 23.0\%", report2 = "hello world 54.0\%"),
-data.frame(percentage = "hello world (\\\\d+\\\\.?\\\\d*)(\\\\w*)"))
+data.frame(percentage = "hello world (?<value>\\\\d+\\\\.?\\\\d*)(?<units>\\\\w*)"))
 
 }
